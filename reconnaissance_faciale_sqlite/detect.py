@@ -35,12 +35,12 @@ while True:
                 for (x, y, w, h) in faces:
                         cv2.rectangle(img, (x, y), (x+w, y+h), (0, 255, 0), 2)
 
-				#prévoir la personne détécté a partir de notre modèle LBPH
+				#prÃ©voir la personne dÃ©tÃ©ctÃ© a partir de notre modÃ¨le LBPH
         		Id,conf=recognizer.predict(gray[y:y+h, x:x+w])
 
-			#appele à la fonction getProfile afin d'obtenir les infos de la bd
+			#appele Ã  la fonction getProfile afin d'obtenir les infos de la bd
 			profile=getProfile(Id)
-			#si l'id existe on écrit à coté du rectangle qui entour les visages détéctés les informations enregistrée dans la bd
+			#si l'id existe on Ã©crit Ã  cotÃ© du rectangle qui entour les visages dÃ©tÃ©ctÃ©s les informations enregistrÃ©e dans la bd
 			if(profile!=None):
 				cv2.cv.PutText(cv2.cv.fromarray(img),str(profile[1]),(x,y+h+15),font,255)
 				cv2.cv.PutText(cv2.cv.fromarray(img),str(profile[2]),(x,y+h+32),font,255)
@@ -48,7 +48,7 @@ while True:
 				cv2.cv.PutText(cv2.cv.fromarray(img),str(profile[4]),(x,y+h+62),font,255)
 			else:
 				cv2.cv.PutText(cv2.cv.fromarray(img),str("Inconnue"),(x,y+h+15),font,255)
-                cv2.imshow('Video', img)
+                cv2.imshow('Identification des visages', img)
         
         #ECHAP pour quitter
         k = cv2.waitKey(30) & 0xff
